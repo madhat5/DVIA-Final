@@ -162,7 +162,8 @@ Answer project questions as you go along
 
 
 ### next
-- position + radius based on spread & over/under
+- position + radius based on spread & over/under (x)
+- add .gitignore
 - size
 - bg:
     - color circles per team
