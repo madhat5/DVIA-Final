@@ -1,3 +1,15 @@
-circle {
-    fill: orange;
+.bubbles:hover {
+    stroke-width: 3px;
+    stroke: #008E98;
 }
+
+.tooltip,
+#legend {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.d3-tip.n:after {
+    margin: -2px 0 0 0;
+    top: 100%;
+    left: 0;
+  }

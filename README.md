@@ -70,21 +70,20 @@ proposal link: https://docs.google.com/document/d/1TN6jKburhzMQtglane7kCpJStGc9U
     - JS/CSS/HTML (custom)
     - Adobe Photoshop/Illustrator
 
-
 ### next
 - position + radius based on spread & over/under (x)
 - add .gitignore (x)
 - encoding (ox)
-    - tooltips
-    - x axis
+    - tooltips (ox)
+    - legend 
+    - x axis (x)
     - summary (x)
 - color (x)
 - size/svg responsiveness
 - host on github pages
 - further exploration
-    - color circles per team
+    - color circles per team (https://teamcolorcodes.com/kansas-city-chiefs-color-codes/)
     - setup custom diagram
-
 
 ### encoded summary
 - define
@@ -145,7 +144,9 @@ proposal link: https://docs.google.com/document/d/1TN6jKburhzMQtglane7kCpJStGc9U
 > https://stackoverflow.com/questions/60630895/what-does-d3-range-map-do
 > http://bl.ocks.org/eesur/be2abfb3155a38be4de4
 > https://www.d3-graph-gallery.com/graph/custom_color.html
-
+> http://jonathansoma.com/site/tutorials/d3/clicking-and-hovering/
+> https://www.d3-graph-gallery.com/graph/custom_axis.html
+> https://medium.com/@kj_schmidt/show-data-on-mouse-over-with-d3-js-3bf598ff8fc2
 
 ### Notes
 - Methodology influences:
