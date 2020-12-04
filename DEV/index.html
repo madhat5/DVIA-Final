@@ -1,19 +1,45 @@
 <!-- <!DOCTYPE html> -->
 <html lang="en">
 <meta charset="utf-8">
+
 <head>
     <link rel="stylesheet" href="style.css">
-    <title>Force layout (x axis)</title>
+    <title>SB uncertainty</title>
 </head>
 
 <body>
+    <h1>The uncertainty of the Superbowl</h1>
     <div id="content">
-        <svg width="1500" height="200">
+        <svg width="1400" height="200">
             <g transform="translate(50, 100)"></g>
         </svg>
     </div>
 
+    <h2>Summary and conclusion</h2>
+    <p>each circle represents a superbowl
+        <br>
+        <ul>
+            <li>the radius is the over/under betting number divided by the actual total score (I’m hoping to represent
+                the radius size as a measure of score uncertainty, so the larger the radius the greater the difference
+                between the guess and the actual final score)</li>
+            <li>the value along the x axis represents the spread for the game (i’m hoping to use a color scheme to
+                represent whether the favored team won/lost vs underdogs won/lost)</li>
+        </ul>
+        <br>
+        As i understand uncertainty, I think both the spread and over/under are ways to measure that in sports
+        <ul>
+            <li>the over/under represents a guess of the total score</li>
+            <li>the spread represents both the favored team and how much it is thought they’ll win by</li>
+        </ul>
+        <br>
+        notes: 2 superbowls were removed
+        <ul>
+            <li>pick em': Seahawks vs Patrios (explain)</li>
+            <li>SB1</li>
+        </ul>
+    </p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
     <script src="main.js"></script>
 </body>

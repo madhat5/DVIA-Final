@@ -1,5 +1,7 @@
-# DVIA assign 4
-### Education and Salary difference btw men and women
+# DVIA Final
+### The uncertainty of the Superbowl
+
+url: (enter)
 
 ### Setup (fix)
 1. npm install
@@ -19,6 +21,135 @@ proposal link: https://docs.google.com/document/d/1TN6jKburhzMQtglane7kCpJStGc9U
 - Output: 
 > url
 ![screenshot title](screenshot-title)
+
+============================================================
+### Concept & build
+1. `Types of data`
+- dataset: 
+    > https://www.pro-football-reference.com/
+    > https://www.betfirm.com/point-spreads-for-every-super-bowl/
+    > https://www.thelines.com/super-bowl-coin-toss-history/
+    > https://sercc.com/SuperBowlClimate.pdf
+    - starting at 2000
+- mostly quantitative, and temporal including:
+    - quant (toggle btw?):
+        - layout for scatter plot?
+            - color for favorite/underdog; 
+            - shape for winner/loser
+            - x = years; y = odds/coin toss?
+        - betting odds
+        - record (wins/losses, margins of victory?, heads up record)?
+        - coin toss record
+            - heads/tails?
+        - injuries
+        - weather (temp. wind, precipitation)?
+    - geo: 
+        - locations of both teams + SB location?
+        - radius = times team has won (historical)
+        - color = favorite/underdog
+- sketch: report includes
+    - scatter plot?
+    - map
+- interactive
+    - can i build in such a way where user toggles variables to see outcomes?
+    - add guessing game?
+        - hide winner/loser stats > have user guess > reveal w/l
+
+2. `Questions`
+- does spread measure the rate of uncertainty? (eg higher spread = higher uncertainty)
+
+3. `Audience`
+- Target:
+    - sports enthusiats/analysts
+    - sports team managers?
+- What factors influence championship wining seasons?
+- have an interactive report, with a drop down for years (+ all)?
+
+4. `Tools`
+    - d3 (circle packing)
+    - JS/CSS/HTML (custom)
+    - Adobe Photoshop/Illustrator
+
+
+### next
+- position + radius based on spread & over/under (x)
+- add .gitignore (x)
+- encoding (ox)
+    - tooltips
+    - x axis
+    - summary (x)
+- color (x)
+- size/svg responsiveness
+- host on github pages
+- further exploration
+    - color circles per team
+    - setup custom diagram
+
+
+### encoded summary
+- define
+    - uncertainty
+    - spread
+    - over/under
+    - project math (radius, position)
+- starter
+    - each circle represents a superbowl (i had to remove 2 of them bc of data issues)
+        - the radius is the over/under betting number divided by the actual total score (I’m hoping to represent the radius size as a measure of score uncertainty, so the larger the radius the greater the difference between the guess and the actual final score)
+        - the value along the x axis represents the spread for the game  (i’m hoping to use a color scheme to represent whether the favored team won/lost vs underdogs won/lost)
+    - As i understand uncertainty, I think both the spread and over/under are ways to measure that in sports
+        - the over/under represents a guess of the total score
+        - the spread represents both the favored team and how much it is thought they’ll win by
+
+
+### quick notes
+- Data
+    - > (sports-reference?)
+    - 1. how sports odds/betting measures even uncertainty? (odds vs result)
+        - factors that go in to odds include: 
+            - win/loss rates; winning streaks
+            - individual player acquisitions
+            - previous record agains team x
+    - 2. championship coin toss vs game winner?
+        - probability of winning game with coin toss?
+    - *3. a complete evaluation report of championship uncertainty in sports?*
+        - frequency framing of coin toss
+        - distribution chart of win/loss
+        - error bar of points scored?
+        - chart for odds from (1.)
+
+- likely visuals
+    - error bars, confidence bands (more technical user friendly)
+    - frequency framing (more lay user friendly)
+        - visualizing a probability as a frequency
+    - quantile dot plot?
+    - multi chart?
+        - pick team > odds team winning > odds division winning > odds conference winning
+
+============================================================
+##### Project refs
+> https://clauswilke.com/dataviz/visualizing-uncertainty.html *!*
+> https://d-nb.info/1138284831/34 *!*
+> https://www.betfirm.com/point-spreads-for-every-super-bowl/ *!*
+> https://www.thelines.com/super-bowl-coin-toss-history/ *!*
+> https://www.3cs.ch/visualizing-uncertainty/
+> https://flowingdata.com/2018/01/08/visualizing-the-uncertainty-in-data/
+> https://medium.com/multiple-views-visualization-research-explained/uncertainty-visualization-explained-67e7a73f031b
+> https://www.researchgate.net/publication/290190992_Do_sports_fans_really_value_uncertainty_of_outcome_Evidence_from_the_English_Premier_League
+> https://www.sportsoddshistory.com/nfl-odds/
+> https://www.sportingnews.com/us/nfl/news/super-bowl-weather-history-rain-wind-cold-snow/1diqsbswj63pg1u4rybj2snjw0
+
+
+##### Code refs
+> https://bl.ocks.org/d3indepth/fee5ce57c3fc3e94c3332577d1415df4
+> https://www.d3indepth.com/force-layout/
+> https://stackoverflow.com/questions/60630895/what-does-d3-range-map-do
+> http://bl.ocks.org/eesur/be2abfb3155a38be4de4
+> https://www.d3-graph-gallery.com/graph/custom_color.html
+
+
+### Notes
+- Methodology influences:
+    - Ben Fry, Amanda Cox, Alberto Cairo, Mike Bostock
 
 
 ============================================================
@@ -110,106 +241,3 @@ Answer project questions as you go along
     - What tools did you explore? 
     - What challenges did you run into? 
     - How did you iterate?
-
-
-============================================================
-### Concept & build
-1. `Types of data`
-- dataset: 
-    > https://www.pro-football-reference.com/
-    > https://www.betfirm.com/point-spreads-for-every-super-bowl/
-    > https://www.thelines.com/super-bowl-coin-toss-history/
-    > https://sercc.com/SuperBowlClimate.pdf
-    - starting at 2000
-- mostly quantitative, and temporal including:
-    - quant (toggle btw?):
-        - layout for scatter plot?
-            - color for favorite/underdog; 
-            - shape for winner/loser
-            - x = years; y = odds/coin toss?
-        - betting odds
-        - record (wins/losses, margins of victory?, heads up record)?
-        - coin toss record
-            - heads/tails?
-        - injuries
-        - weather (temp. wind, precipitation)?
-    - geo: 
-        - locations of both teams + SB location?
-        - radius = times team has won (historical)
-        - color = favorite/underdog
-- sketch: report includes
-    - scatter plot?
-    - map
-- interactive
-    - can i build in such a way where user toggles variables to see outcomes?
-    - add guessing game?
-        - hide winner/loser stats > have user guess > reveal w/l
-
-2. `Questions`
-- does spread measure the rate of uncertainty? (eg higher spread = higher uncertainty)
-
-3. `Audience`
-- Target:
-    - sports enthusiats/analysts
-    - sports team managers?
-- What factors influence championship wining seasons?
-- have an interactive report, with a drop down for years (+ all)?
-
-4. `Tools`
-    - d3 (circle packing)
-    - JS/CSS/HTML (custom)
-    - Adobe Photoshop/Illustrator
-
-
-### next
-- position + radius based on spread & over/under (x)
-- add .gitignore
-- size
-- bg:
-    - color circles per team
-    - or setup custom diagram
-
-
-### quick notes
-- Data
-    - > (sports-reference?)
-    - 1. how sports odds/betting measures even uncertainty? (odds vs result)
-        - factors that go in to odds include: 
-            - win/loss rates; winning streaks
-            - individual player acquisitions
-            - previous record agains team x
-    - 2. championship coin toss vs game winner?
-        - probability of winning game with coin toss?
-    - *3. a complete evaluation report of championship uncertainty in sports?*
-        - frequency framing of coin toss
-        - distribution chart of win/loss
-        - error bar of points scored?
-        - chart for odds from (1.)
-
-- likely visuals
-    - error bars, confidence bands (more technical user friendly)
-    - frequency framing (more lay user friendly)
-        - visualizing a probability as a frequency
-    - quantile dot plot?
-    - multi chart?
-        - pick team > odds team winning > odds division winning > odds conference winning
-
-============================================================
-##### Project refs
-> https://clauswilke.com/dataviz/visualizing-uncertainty.html *!*
-> https://d-nb.info/1138284831/34 *!*
-> https://www.betfirm.com/point-spreads-for-every-super-bowl/ *!*
-> https://www.thelines.com/super-bowl-coin-toss-history/ *!*
-> https://www.3cs.ch/visualizing-uncertainty/
-> https://flowingdata.com/2018/01/08/visualizing-the-uncertainty-in-data/
-> https://medium.com/multiple-views-visualization-research-explained/uncertainty-visualization-explained-67e7a73f031b
-> https://www.researchgate.net/publication/290190992_Do_sports_fans_really_value_uncertainty_of_outcome_Evidence_from_the_English_Premier_League
-> https://www.sportsoddshistory.com/nfl-odds/
-> https://www.sportingnews.com/us/nfl/news/super-bowl-weather-history-rain-wind-cold-snow/1diqsbswj63pg1u4rybj2snjw0
-
-##### Code refs
-> https://bl.ocks.org/d3indepth/fee5ce57c3fc3e94c3332577d1415df4
-
-### Notes
-- Methodology influences:
-    - Ben Fry, Amanda Cox, Alberto Cairo, Mike Bostock

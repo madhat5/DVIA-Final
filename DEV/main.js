@@ -5,9 +5,10 @@ async function init() {
     let width = 600,
         height = 400;
 
-    let colorScale = ['orange', 'lightblue', '#B19CD9'];
-    let xScale = d3.scaleLinear().domain([0, 1]).range([0, 600]);
+    var myColor = d3.scaleSequential().domain([1, 40])
+        .interpolator(d3.interpolatePlasma);
 
+    let xScale = d3.scaleLinear().domain([0, 1]).range([0, 600]);
 
     d3.json("data/data.json", (data) => {
         // console.log(data);
@@ -50,7 +51,7 @@ async function init() {
                 value: Math.abs(data[i].spread.spread[1]) / 10
             }
         });
-        console.log(nodes)  
+        console.log(nodes)
 
         let simulation = d3.forceSimulation(nodes)
             .force('charge', d3.forceManyBody().strength(5))
@@ -76,7 +77,7 @@ async function init() {
                     return d.radius;
                 })
                 .style('fill', (d) => {
-                    return d.color;
+                    return myColor(d.radius);
                 })
                 .merge(u)
                 .attr('cx', (d) => {
