@@ -75,7 +75,7 @@ proposal link: https://docs.google.com/document/d/1TN6jKburhzMQtglane7kCpJStGc9U
 - add .gitignore (x)
 - encoding (ox)
     - tooltips (ox)
-    - legend 
+    - legend (x)
     - x axis (x)
     - summary (x)
 - color (x)
@@ -147,6 +147,7 @@ proposal link: https://docs.google.com/document/d/1TN6jKburhzMQtglane7kCpJStGc9U
 > http://jonathansoma.com/site/tutorials/d3/clicking-and-hovering/
 > https://www.d3-graph-gallery.com/graph/custom_axis.html
 > https://medium.com/@kj_schmidt/show-data-on-mouse-over-with-d3-js-3bf598ff8fc2
+> http://bl.ocks.org/mmattozzi/7018021
 
 ### Notes
 - Methodology influences:

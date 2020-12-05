@@ -13,13 +13,17 @@ async function init() {
     // -1- Create a tooltip div that is hidden by default:
     let tooltip = d3.select("#content")
         .append("div")
-        .style("opacity", 0)
         .attr("class", "tooltip")
-        .style("background-color", "#013369")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden")
+        .style("background-color", "rgba(1, 51, 105, 0.75)")
+        // .style("background-color", "#013369")
         .style("border-radius", "5px")
         .style("padding", "10px")
         .style("color", "white")
         .style("width", "250px")
+        .style("font", "12px Helvetica")
 
     // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
     let showTooltip = function (d) {
@@ -27,7 +31,7 @@ async function init() {
             .transition()
             .duration(200)
         tooltip
-            .style("opacity", 1)
+            .style("visibility", "visible")
             .html(
                 "date: " + d.date + "<br>" +
                 "SB: " + d.SB + "<br>" +
@@ -39,19 +43,12 @@ async function init() {
                 "toss_winner: " + d.toss_winner + "<br>" +
                 "spread: " + d.spread[0] + " " + d.spread[1] + "<br>" +
                 "O_U: " + d.O_U)
-            .style("left", (d3.mouse(this)[0] + 30) + "px")
-            .style("top", (d3.mouse(this)[1] + 30) + "px")
     }
     let moveTooltip = function (d) {
-        tooltip
-            .style("left", (d3.mouse(this)[0] + 30) + "px")
-            .style("top", (d3.mouse(this)[1] + 30) + "px")
+        return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
     }
     let hideTooltip = function (d) {
-        tooltip
-            .transition()
-            .duration(200)
-            .style("opacity", 0)
+        return tooltip.style("visibility", "hidden");
     }
 
     // create svg element
@@ -159,7 +156,7 @@ async function init() {
                 })
                 .on("mouseover", showTooltip)
                 .on("mousemove", moveTooltip)
-                .on("mouseleave", hideTooltip)
+                .on("mouseout", hideTooltip)
 
             u.exit().remove();
         }
