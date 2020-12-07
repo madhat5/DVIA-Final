@@ -17,31 +17,54 @@
 
     <div style="width: 100%; overflow: hidden;">
         <div id="legend" style="width: 460px; float: left;"></div>
-        <div style="margin-left: 480px;">
-            <h2>Summary and conclusion</h2>
-            <p>each circle represents a superbowl
+        <div style="margin-left: 480px; max-width: 750px;">
+            <p>
+                <b>About</b>
+                <br><br>
+                As I understand uncertainty, I think both the spread and over/under are ways to measure that in sports:
+                <ul>
+                    <li>The <b>spread</b> represents both the favored team, and how much it is thought they’ll win by.
+                    </li>
+                    <li>The <b>over/under</b> represents a guess of the total score.</li>
+                </ul>
+                My goal for this visualization is to visually represent the accuracy with which sports betting measures
+                uncertainty, compared to the results of the game. I'm using football because it is currently football
+                season, and the superbowl because it provides a small but important data set. This should be replicable
+                over regular season and playoff games, as well as other sports.
+                <br><br>
+                <b>Conclusions:</b>
+                <br><br>
+                This exercise revealed a few interesting things for me.
+                <ul>
+                    <li>The majority of superbowls were determined to be close games, which makes sense considering this is a game between the supposed best of each conference.</li>
+                    <li>For those games with a higher spread (> -9), the over/under measurment is less accurate.</li>
+                    <!-- <li>The two games with the highest spread were </li> -->
+                </ul>
+            </p>
+            <p>
+                <b>Chart:</b>
                 <br>
                 <ul>
-                    <li>the radius is the over/under betting number divided by the actual total score (I’m hoping to
-                        represent
-                        the radius size as a measure of score uncertainty, so the larger the radius the greater the
-                        difference
-                        between the guess and the actual final score)</li>
-                    <li>the value along the x axis represents the spread for the game (i’m hoping to use a color scheme
-                        to
-                        represent whether the favored team won/lost vs underdogs won/lost)</li>
+                    <li>Each circle represents a Superbowl.</li>
+                    <li><b>Circle radius:</b> is the over/under betting number divided by the actual total score. The radius size will be used as a measure of score uncertainty, where the larger the radius the greater the under, and the smaller the radius the greater the over.</li>
+                    <li><b>Color:</b> is used to represent  the value difference in estimated spread vs actual spread. The lighter color represents a high difference, with spread estimate > actual spread. The darker color represents a high difference, with spread estimate < actual spread.
+                    </li>
+                    <li><b>x axis:</b> the value along the x axis represents the spread value for the game.</li>
                 </ul>
                 <br>
-                As i understand uncertainty, I think both the spread and over/under are ways to measure that in sports
+                <b>Definitions:</b>
                 <ul>
-                    <li>the over/under represents a guess of the total score</li>
-                    <li>the spread represents both the favored team and how much it is thought they’ll win by</li>
+                    <li><strong>Uncertainty:</strong> "something that is uncertain or that causes one to feel uncertain." (Oxford Dictionaries)</li>
+                    <li><strong>Point Spread:</strong> The spread, also referred to as the line, is used to even the odds between two unevenly matched teams. Bookmakers set a spread with the hopes of getting equal action on both sides of a game.</li>
+                    <li><strong>Over/Under:</strong>An over–under or over/under (O/U) bet is a wager in which a sportsbook will predict a number for a statistic in a given game (usually the combined score of the two teams), and bettors wager that the actual number in the game will be either higher or lower than that number.</li>
+                    <li><strong>project math</strong>(radius, position)</li>
                 </ul>
                 <br>
-                notes: 2 superbowls were removed
+                <i><b>Notes:</b> 2 superbowls were removed</i>
                 <ul>
-                    <li>pick em': Seahawks vs Patrios (explain)</li>
-                    <li>SB1</li>
+                    <li>pick em': Seahawks vs Patriots. A “pick em” is when the teams have a point spread of zero, hence neither team is favored.
+                    </li>
+                    <li>SB1 did not have gambiling information.</li>
                 </ul>
             </p>
         </div>
