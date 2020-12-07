@@ -5,7 +5,7 @@ async function init() {
     let width = 600,
         height = 400;
 
-    let myColor = d3.scaleSequential().domain([1, 40])
+    let myColor = d3.scaleSequential().domain([0, 12])
         .interpolator(d3.interpolatePlasma);
 
     let xScale = d3.scaleLinear().domain([0, 1]).range([0, 600]);
@@ -22,7 +22,7 @@ async function init() {
         .style("border-radius", "5px")
         .style("padding", "10px")
         .style("color", "white")
-        .style("width", "250px")
+        .style("width", "150px")
         .style("font", "12px Helvetica")
 
     // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
@@ -33,15 +33,17 @@ async function init() {
         tooltip
             .style("visibility", "visible")
             .html(
-                "date: " + d.date + "<br>" +
-                "SB: " + d.SB + "<br>" +
-                "winner: " + d.winner + "<br>" +
-                "pts: " + d.pts + "<br>" +
-                "loser: " + d.loser + "<br>" +
-                "pts__1: " + d.pts__1 + "<br>" +
-                "toss_call: " + d.toss_call + "<br>" +
-                "toss_winner: " + d.toss_winner + "<br>" +
-                "spread: " + d.spread[0] + " " + d.spread[1] + "<br>" +
+                d.date + "<br>" +
+                "Superbowl " + d.SB + "<br>" +
+                "W: " + d.winner + "<br>" +
+                // "pts: " + d.pts + "<br>" +
+                "L: " + d.loser + "<br>" +
+                // "pts: " + d.pts__1 + "<br>" +
+                "Score: " + d.pts + " - " + d.pts__1 + "<br>" +
+                // "toss_call: " + d.toss_call + "<br>" +
+                // "toss_winner: " + d.toss_winner + "<br>" +
+                "Spread: " + d.spread[0] + " " + d.spread[1] + "<br>" +
+                "Total points: " + d.totalPoints + "<br>" +
                 "O_U: " + d.O_U)
     }
     let moveTooltip = function (d) {
@@ -66,6 +68,13 @@ async function init() {
         .append("g")
         .attr("transform", "translate(0,50)") // This controls the vertical position of the Axis
         .call(d3.axisBottom(x));
+
+    // Add X axis label:
+    svg.append("text")
+        .attr("text-anchor", "end")
+        .attr("x", width * 2)
+        .attr("y", height - 300)
+        .text("Point Spread");
 
     d3.json("data/data.json", (data) => {
         // console.log(data);
@@ -106,12 +115,14 @@ async function init() {
                 // create data items in DB for these??
                 radius: (data[i].spread.O_U / (data[i].pts + data[i].pts__1)) * 10,
                 value: Math.abs(data[i].spread.spread[1]) / 10,
+                spreadDiff: (Math.abs(data[i].spread.spread[1]) / (data[i].pts - data[i].pts__1)) * 5,
                 date: data[i].date,
                 SB: data[i].SB,
                 winner: data[i].winner,
                 pts: data[i].pts,
                 loser: data[i].loser,
                 pts__1: data[i].pts__1,
+                totalPoints: data[i].pts + data[i].pts__1,
                 toss_call: data[i].toss_call,
                 toss_winner: data[i].toss_winner,
                 spread: [data[i].spread.spread[0], data[i].spread.spread[1]],
@@ -145,7 +156,7 @@ async function init() {
                     return d.radius;
                 })
                 .style('fill', (d) => {
-                    return myColor(d.radius);
+                    return myColor(d.spreadDiff);
                 })
                 .merge(u)
                 .attr('cx', (d) => {

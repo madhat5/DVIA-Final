@@ -74,10 +74,13 @@ proposal link: https://docs.google.com/document/d/1TN6jKburhzMQtglane7kCpJStGc9U
 - position + radius based on spread & over/under (x)
 - add .gitignore (x)
 - encoding (ox)
-    - tooltips (ox)
-    - legend (x)
+    - tooltips (x)
+    - radius legend (x)
     - x axis (x)
     - summary (x)
+    - titles (x)
+    - color legend (o)
+- clean up
 - color (x)
 - size/svg responsiveness
 - host on github pages
@@ -91,13 +94,12 @@ proposal link: https://docs.google.com/document/d/1TN6jKburhzMQtglane7kCpJStGc9U
     - spread
     - over/under
     - project math (radius, position)
-- starter
-    - each circle represents a superbowl (i had to remove 2 of them bc of data issues)
-        - the radius is the over/under betting number divided by the actual total score (I’m hoping to represent the radius size as a measure of score uncertainty, so the larger the radius the greater the difference between the guess and the actual final score)
-        - the value along the x axis represents the spread for the game  (i’m hoping to use a color scheme to represent whether the favored team won/lost vs underdogs won/lost)
-    - As i understand uncertainty, I think both the spread and over/under are ways to measure that in sports
-        - the over/under represents a guess of the total score
-        - the spread represents both the favored team and how much it is thought they’ll win by
+- prof notes:
+    - (x) What does the line on the bottom indicate to us? Translate those values into something that an audience can understand while trying to decode your visualization 
+    - (x) Make sure to translate the labels into something digestible for the audience. All the variables might not been needed - direct our attention to the key pieces of information we need.
+    - (x) Incorporate a way for us to understand how you are using color - (ox) add a legend or other to help us make those determinations quickly
+    - (ox) I like the “About” section that gives some details about the methodology and how to understand the radius of the circle but consider…Could you perhaps create some “examples” or takeaways from this visualization to showcase the details in the second half? This would help the methodology/explanation be understood in   context. - It would also help answer the question  - what did you uncover from this visualization? did anything interesting stand out that you want to narrate to us?
+    - (ox) This maybe get’s to the contextual pieces surrounding the visualization!
 
 
 ### quick notes
@@ -136,6 +138,7 @@ proposal link: https://docs.google.com/document/d/1TN6jKburhzMQtglane7kCpJStGc9U
 > https://www.researchgate.net/publication/290190992_Do_sports_fans_really_value_uncertainty_of_outcome_Evidence_from_the_English_Premier_League
 > https://www.sportsoddshistory.com/nfl-odds/
 > https://www.sportingnews.com/us/nfl/news/super-bowl-weather-history-rain-wind-cold-snow/1diqsbswj63pg1u4rybj2snjw0
+> http://nbremer.github.io/occupationscanvas/
 
 
 ##### Code refs
