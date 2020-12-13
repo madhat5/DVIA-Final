@@ -15,9 +15,8 @@
         </svg>
     </div>
 
-    <div style="width: 100%; overflow: hidden;">
-        <div id="legend" style="width: 460px; float: left;"></div>
-        <div style="margin-left: 480px; max-width: 750px;">
+    <div style="width: 100%; overflow: hidden; margin: 30px;">
+        <div id="legend" style="width: 550px;  float: left;">
             <p>
                 <b>About</b>
                 <br><br>
@@ -36,33 +35,53 @@
                 <br><br>
                 This exercise revealed a few interesting things for me.
                 <ul>
-                    <li>The majority of superbowls were determined to be close games, which makes sense considering this is a game between the supposed best of each conference.</li>
+                    <li>The sweet spots for accuracy (aka least uncertainty) are
+                        <ul>
+                            <li><b>color ratio</b>, representing the score margin between both teams: between 4.0 and 6.7</li>
+                            <li><b>radius ratio</b>, representing the total score of the game: between 13.8 and 22.5</li>
+                        </ul>
+                    </li>
+                    <li>The majority of superbowls were determined to be close games, which makes sense considering this
+                        is a game between the supposed best of each conference.</li>
                     <li>For those games with a higher spread (> -9), the over/under measurment is less accurate.</li>
-                    <!-- <li>The two games with the highest spread were </li> -->
                 </ul>
             </p>
+        </div>
+        <div style="margin-left: 600px; max-width: 700px;">
             <p>
                 <b>Chart:</b>
                 <br>
                 <ul>
                     <li>Each circle represents a Superbowl.</li>
-                    <li><b>Circle radius:</b> is the over/under betting number divided by the actual total score. The radius size will be used as a measure of score uncertainty, where the larger the radius the greater the under, and the smaller the radius the greater the over.</li>
-                    <li><b>Color:</b> is used to represent  the value difference in estimated spread vs actual spread. The lighter color represents a high difference, with spread estimate > actual spread. The darker color represents a high difference, with spread estimate < actual spread.
-                    </li>
-                    <li><b>x axis:</b> the value along the x axis represents the spread value for the game.</li>
+                    <li><b>Circle radius:</b> is the total score estimate (over/under) divided by the actual total
+                        score. The
+                        radius size will be used as a measure of score uncertainty, where the larger the radius the
+                        greater the difference under the actual score, and the smaller the radius the greater the
+                        difference over the actual score.</li>
+                    <li><b>Color:</b> is used to represent the estimated spread divided by the actual spread. The
+                        lighter color represents a high difference, with spread estimate > actual spread. The darker
+                        color represents a high difference, with spread estimate < actual spread. </li> <li><b>x
+                                axis:</b> the value along the x axis represents the spread value for the game.</li>
                 </ul>
                 <br>
                 <b>Definitions:</b>
                 <ul>
-                    <li><strong>Uncertainty:</strong> "something that is uncertain or that causes one to feel uncertain." (Oxford Dictionaries)</li>
-                    <li><strong>Point Spread:</strong> The spread, also referred to as the line, is used to even the odds between two unevenly matched teams. Bookmakers set a spread with the hopes of getting equal action on both sides of a game.</li>
-                    <li><strong>Over/Under:</strong>An over–under or over/under (O/U) bet is a wager in which a sportsbook will predict a number for a statistic in a given game (usually the combined score of the two teams), and bettors wager that the actual number in the game will be either higher or lower than that number.</li>
+                    <li><strong>Uncertainty:</strong> "something that is uncertain or that causes one to feel
+                        uncertain." (Oxford Dictionaries)</li>
+                    <li><strong>Point Spread:</strong> The spread, also referred to as the line, is used to even the
+                        odds between two unevenly matched teams. Bookmakers set a spread with the hopes of getting equal
+                        action on both sides of a game.</li>
+                    <li><strong>Over/Under:</strong>An over–under or over/under (O/U) bet is a wager in which a
+                        sportsbook will predict a number for a statistic in a given game (usually the combined score of
+                        the two teams), and bettors wager that the actual number in the game will be either higher or
+                        lower than that number.</li>
                     <li><strong>project math</strong>(radius, position)</li>
                 </ul>
                 <br>
                 <i><b>Notes:</b> 2 superbowls were removed</i>
                 <ul>
-                    <li>pick em': Seahawks vs Patriots. A “pick em” is when the teams have a point spread of zero, hence neither team is favored.
+                    <li>pick em': Seahawks vs Patriots. A “pick em” is when the teams have a point spread of zero, hence
+                        neither team is favored.
                     </li>
                     <li>SB1 did not have gambiling information.</li>
                 </ul>
@@ -73,6 +92,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"
+        integrity="sha512-wNH6xsp2n8CfB91nrBtfc4sfLwYPBMjSWVUwQOp60AYYXH6i8yCwuKFZ4rgK2i6pQek/b+bSyR7b01/922IBzQ=="
+        crossorigin="anonymous"></script>
 
     <script src="main.js"></script>
 </body>

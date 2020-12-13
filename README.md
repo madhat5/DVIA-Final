@@ -1,7 +1,7 @@
 # DVIA Final
 ### The uncertainty of the Superbowl
 
-url: (enter)
+url: https://madhat5.github.io/DVIA-Final/DEV/
 
 ### Setup (fix)
 1. npm install
