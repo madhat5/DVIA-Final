@@ -5,10 +5,13 @@ async function init() {
     let width = 600,
         height = 400;
 
-    let myColor = d3.scaleSequential().domain([0, 12])
+    let myColor = d3.scaleSequential()
+        .domain([0, 12])
         .interpolator(d3.interpolatePlasma);
 
-    let xScale = d3.scaleLinear().domain([0, 1]).range([0, 600]);
+    let xScale = d3.scaleLinear()
+        .domain([0, 1])
+        .range([0, 600]);
 
     // -1- Create a tooltip div that is hidden by default:
     let tooltip = d3.select("#content")
@@ -58,23 +61,34 @@ async function init() {
         .append("svg")
         .attr("width", 1400)
 
+    let linearSize = d3.scaleLinear()
+        .domain([5, 40])
+        .range([10, 30]);
+
     // Create the scale
     let x = d3.scaleLinear()
         .domain([0, -19]) // This is what is written on the Axis: from 0 to 100
         .range([50, 1200]); // This is where the axis is placed: from 100px to 800px
 
     // Draw the axis
-    svg
-        .append("g")
-        .attr("transform", "translate(0,50)") // This controls the vertical position of the Axis
+    svg.append("g")
+        .attr("transform", "translate(0,10)") // This controls the vertical position of the Axis
         .call(d3.axisBottom(x));
 
     // Add X axis label:
     svg.append("text")
         .attr("text-anchor", "end")
         .attr("x", width * 2)
-        .attr("y", height - 300)
+        .attr("y", 60)
         .text("Point Spread");
+
+    svg.append("g")
+        .attr("class", "legendSequential")
+        .attr("transform", "translate(" + width / 9 + ",70)");
+
+    svg.append("g")
+        .attr("class", "legendSize")
+        .attr("transform", "translate(" + width / 1.3 + ",70)")
 
     d3.json("data/data.json", (data) => {
         // console.log(data);
@@ -115,7 +129,7 @@ async function init() {
                 // create data items in DB for these??
                 radius: (data[i].spread.O_U / (data[i].pts + data[i].pts__1)) * 10,
                 value: Math.abs(data[i].spread.spread[1]) / 10,
-                spreadDiff: (Math.abs(data[i].spread.spread[1]) / (data[i].pts - data[i].pts__1)) * 5,
+                spreadDiff: (Math.abs(data[i].spread.spread[1]) / (data[i].pts - data[i].pts__1)) * (Math.PI * 2),
                 date: data[i].date,
                 SB: data[i].SB,
                 winner: data[i].winner,
@@ -140,6 +154,7 @@ async function init() {
                 return 0;
             }))
             .force('collision', d3.forceCollide().radius((d) => {
+                console.log(d.radius)
                 return d.radius;
             }))
             .on('tick', ticked);
@@ -175,13 +190,35 @@ async function init() {
 
 
     // LEGEND
+    let legendSequential = d3.legendColor()
+        .shapeWidth(30)
+        .cells(10)
+        .orient("horizontal")
+        .scale(myColor)
+
+    svg.select(".legendSequential")
+        .call(legendSequential);
+
+    let legendSize = d3.legendSize()
+        .scale(linearSize)
+        .shape('circle')
+        .shapePadding(15)
+        .labelOffset(20)
+        .orient('horizontal');
+
+    svg.select(".legendSize")
+        .call(legendSize);
+
     // append the svg object to the body of the page
     let legendHeight = 460;
     let legendWidth = 460;
-    let legendSvg = d3.select("#legend")
-        .append("svg")
-        .attr("width", legendWidth)
-        .attr("height", legendHeight)
+    // let legendSvg = d3.select("#legend")
+    //     .append("svg")
+    //     .attr("width", legendWidth)
+    //     .attr("height", legendHeight)
+    //     .append("g")
+    //     .attr("class", "circleLegend")
+    //     .attr("transform", "translate(0, -100)");
 
     // The scale you use for bubble size
     let size = d3.scaleSqrt()
@@ -194,56 +231,56 @@ async function init() {
     let xCircle = 230;
     let xLabel = 380;
     let yCircle = 330;
-    legendSvg
-        .selectAll("legend")
-        .data(valuesToShow)
-        .enter()
-        .append("circle")
-        .attr("cx", xCircle)
-        .attr("cy", function (d) {
-            return yCircle - size(d)
-        })
-        .attr("r", function (d) {
-            return size(d)
-        })
-        .style("fill", "none")
-        .attr("stroke", "black")
+    // legendSvg
+    //     .selectAll("legend")
+    //     .data(valuesToShow)
+    //     .enter()
+    //     .append("circle")
+    //     .attr("cx", xCircle)
+    //     .attr("cy", function (d) {
+    //         return yCircle - size(d)
+    //     })
+    //     .attr("r", function (d) {
+    //         return size(d)
+    //     })
+    //     .style("fill", "none")
+    //     .attr("stroke", "black")
 
     // Add legend: segments
-    legendSvg
-        .selectAll("legend")
-        .data(valuesToShow)
-        .enter()
-        .append("line")
-        .attr('x1', function (d) {
-            return xCircle + size(d)
-        })
-        .attr('x2', xLabel)
-        .attr('y1', function (d) {
-            return yCircle - size(d)
-        })
-        .attr('y2', function (d) {
-            return yCircle - size(d)
-        })
-        .attr('stroke', 'black')
-        .style('stroke-dasharray', ('2,2'))
+    // legendSvg
+    //     .selectAll("legend")
+    //     .data(valuesToShow)
+    //     .enter()
+    //     .append("line")
+    //     .attr('x1', function (d) {
+    //         return xCircle + size(d)
+    //     })
+    //     .attr('x2', xLabel)
+    //     .attr('y1', function (d) {
+    //         return yCircle - size(d)
+    //     })
+    //     .attr('y2', function (d) {
+    //         return yCircle - size(d)
+    //     })
+    //     .attr('stroke', 'black')
+    //     .style('stroke-dasharray', ('2,2'))
 
     // Add legend: labels
-    legendSvg
-        .selectAll("legend")
-        .data(valuesToShow)
-        .enter()
-        .append("text")
-        .attr('x', xLabel)
-        .attr('y', function (d) {
-            return yCircle - size(d)
-        })
-        .text(function (d, i) {
-            return actualShow[i]
-        })
-        .style("font-size", 15)
-        .style("font-style", 'italic')
-        .attr('alignment-baseline', 'middle')
+    // legendSvg
+    //     .selectAll("legend")
+    //     .data(valuesToShow)
+    //     .enter()
+    //     .append("text")
+    //     .attr('x', xLabel)
+    //     .attr('y', function (d) {
+    //         return yCircle - size(d)
+    //     })
+    //     .text(function (d, i) {
+    //         return actualShow[i]
+    //     })
+    //     .style("font-size", 15)
+    //     .style("font-style", 'italic')
+    //     .attr('alignment-baseline', 'middle')
 
 }
 init()
